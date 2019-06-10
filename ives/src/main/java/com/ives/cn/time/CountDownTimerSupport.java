@@ -10,7 +10,7 @@ import java.util.TimerTask;
  * @author 张海洋
  * @Date on 2019/05/13.
  * @org 上海..科技有限公司
- * @describe   支持  Android倒计时器，支持开始倒计时、暂停倒计时、继续倒计时、停止倒计时、重新倒计时
+ * @describe 支持  Android倒计时器，支持开始倒计时、暂停倒计时、继续倒计时、停止倒计时、重新倒计时
  */
 public class CountDownTimerSupport implements ITimerSupport {
     private Timer mTimer;
@@ -114,8 +114,8 @@ public class CountDownTimerSupport implements ITimerSupport {
     }
 
     /**
-     * @deprecated 使用构造方法
      * @param millisInFuture
+     * @deprecated 使用构造方法
      */
     @Deprecated
     public void setMillisInFuture(long millisInFuture) {
@@ -124,8 +124,8 @@ public class CountDownTimerSupport implements ITimerSupport {
     }
 
     /**
-     * @deprecated 使用构造方法
      * @param countDownInterval
+     * @deprecated 使用构造方法
      */
     @Deprecated
     public void setCountDownInterval(long countDownInterval) {
@@ -178,17 +178,20 @@ public class CountDownTimerSupport implements ITimerSupport {
                     //剩余时间
                     mMillisUntilFinished = mMillisInFuture - (scheduledExecutionTime() - startTime);
 
-                    mHandler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            if (mOnCountDownTimerListener != null) {
-                                mOnCountDownTimerListener.onTick(mMillisUntilFinished);
-                            }
-                        }
-                    });
+
                     if (mMillisUntilFinished <= 0) {
                         //如果没有剩余时间 就停止
                         stop();
+                    } else {
+                        mHandler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                if (mOnCountDownTimerListener != null) {
+                                    mOnCountDownTimerListener.onTick(mMillisUntilFinished);
+                                }
+                            }
+                        });
+
                     }
                 }
             }
