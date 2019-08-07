@@ -2,9 +2,11 @@ package com.ives.cn;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.AttributeSet;
 
 import com.ives.cn.permission.EasyPermissions;
 import com.ives.cn.sofia.Bar;
@@ -136,7 +138,6 @@ public class XTool {
     public static String getRealFilePathFromUri(Context context, Uri uri) {
         return FileKit.uriConvertPath(context, uri);
     }
-
 
 
     public static String getAppVersionName(Context context) {
@@ -402,5 +403,128 @@ public class XTool {
     public static String getMD5(byte[] data) {
         return EncryptKit.getMD5(data);
     }
+
+
+    /**
+     * TypedArray attributes = context.obtainStyledAttributes(attrs, R.styleable.SwitchButton);
+     *
+     * @param context
+     * @param set     attrs
+     * @param attrs   R.styleable.SwitchButton
+     * @return
+     */
+
+    public static TypedArray getTypeArray(Context context, AttributeSet set, int[] attrs) {
+        return context.obtainStyledAttributes(set, attrs);
+    }
+
+    /**
+     * <attr name="sb_effect_duration" format="reference|integer" />
+     * optInt(typedArray,R.styleable.SwitchButton_sb_effect_duration,300);
+     *
+     * @param typedArray
+     * @param index
+     * @param def
+     * @return
+     */
+
+    public static int optInt(TypedArray typedArray,
+                             int index,
+                             int def) {
+        if (typedArray == null) {
+            return def;
+        }
+
+        return typedArray.getInt(index, def);
+    }
+
+    /**
+     * <attr name="sb_width" format="reference|float" />
+     * optPixelSize(typedArray,R.styleable.SwitchButton_sb_width,1.5f);
+     *
+     * @param typedArray
+     * @param index
+     * @param def
+     * @return
+     */
+    public static float optPixelSize(TypedArray typedArray,
+                                     int index,
+                                     float def) {
+        if (typedArray == null) {
+            return def;
+        }
+        return typedArray.getDimension(index, def);
+    }
+
+    /**
+     * <attr name="sb_shadow_radius" format="reference|dimension" />
+     * optPixelSize(typedArray,R.styleable.SwitchButton_sb_shadow_radius,12);
+     *
+     * @param typedArray
+     * @param index
+     * @param def
+     * @return
+     */
+    public static int optPixelSize(TypedArray typedArray,
+                                   int index,
+                                   int def) {
+        if (typedArray == null) {
+            return def;
+        }
+        return typedArray.getDimensionPixelOffset(index, def);
+    }
+
+    /**
+     * <attr name="sb_shadow_color" format="reference|color" />
+     * optColor(typedArray,R.styleable.SwitchButton_sb_shadow_color,0XffAAAAAA);
+     *
+     * @param typedArray
+     * @param index
+     * @param def
+     * @return
+     */
+    public static int optColor(TypedArray typedArray,
+                               int index,
+                               int def) {
+        if (typedArray == null) {
+            return def;
+        }
+        return typedArray.getColor(index, def);
+    }
+
+
+    /**
+     * <attr name="sb_shadow_effect" format="reference|boolean" />
+     * optBoolean(typedArray,R.styleable.SwitchButton_sb_shadow_effect,true)
+     *
+     * @param typedArray
+     * @param index
+     * @param def
+     * @return
+     */
+    public static boolean optBoolean(TypedArray typedArray,
+                                     int index,
+                                     boolean def) {
+        if (typedArray == null) {
+            return def;
+        }
+        return typedArray.getBoolean(index, def);
+    }
+
+    /**
+     * <attr name="sb_shadow_effect" format="reference|string" />
+     * optBoolean(typedArray,R.styleable.SwitchButton_sb_shadow_effect,true)
+     *
+     * @param typedArray
+     * @param index
+     * @return
+     */
+    public static String optString(TypedArray typedArray, int index) {
+        if (typedArray == null) {
+            return "";
+        }
+        return typedArray.getString(index);
+    }
+
 
 }
