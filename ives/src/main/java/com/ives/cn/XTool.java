@@ -214,8 +214,11 @@ public class XTool {
      * @return String
      */
     public static String getSysCurTime(String format) {
-
-        return BaseKit.getSysCurTime(format);
+        String def = "yyyy-MM-dd HH:mm:ss";
+        if (BaseKit.isNotEmpty(format)) {
+            def = format;
+        }
+        return BaseKit.getSysCurTime(def);
     }
 
 
@@ -428,13 +431,10 @@ public class XTool {
      * @return
      */
 
-    public static int optInt(TypedArray typedArray,
-                             int index,
-                             int def) {
+    public static int optInt(TypedArray typedArray, int index, int def) {
         if (typedArray == null) {
             return def;
         }
-
         return typedArray.getInt(index, def);
     }
 
@@ -447,9 +447,7 @@ public class XTool {
      * @param def
      * @return
      */
-    public static float optPixelSize(TypedArray typedArray,
-                                     int index,
-                                     float def) {
+    public static float optPixelSize(TypedArray typedArray, int index, float def) {
         if (typedArray == null) {
             return def;
         }
@@ -465,9 +463,7 @@ public class XTool {
      * @param def
      * @return
      */
-    public static int optPixelSize(TypedArray typedArray,
-                                   int index,
-                                   int def) {
+    public static int optPixelSize(TypedArray typedArray, int index, int def) {
         if (typedArray == null) {
             return def;
         }
@@ -483,9 +479,7 @@ public class XTool {
      * @param def
      * @return
      */
-    public static int optColor(TypedArray typedArray,
-                               int index,
-                               int def) {
+    public static int optColor(TypedArray typedArray, int index, int def) {
         if (typedArray == null) {
             return def;
         }
@@ -502,9 +496,7 @@ public class XTool {
      * @param def
      * @return
      */
-    public static boolean optBoolean(TypedArray typedArray,
-                                     int index,
-                                     boolean def) {
+    public static boolean optBoolean(TypedArray typedArray, int index, boolean def) {
         if (typedArray == null) {
             return def;
         }
